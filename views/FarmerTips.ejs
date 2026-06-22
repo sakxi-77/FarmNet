@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Tips | FarmNet</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    background:#008000;
+    padding:18px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-size:17px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#dcedc8;
+}
+
+/* HERO SECTION */
+
+.hero{
+    height:300px;
+    background:
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:22px;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:50px auto;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:40px;
+    color:#1b5e20;
+}
+
+.section-title p{
+    color:#555;
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* TIPS GRID */
+
+.tips-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* TIP CARD */
+
+.tip-card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+    border-top:6px solid #43a047;
+}
+
+.tip-card:hover{
+    transform:translateY(-8px);
+}
+
+.tip-icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.tip-card h3{
+    color:#1b5e20;
+    margin-bottom:15px;
+    font-size:25px;
+}
+
+.tip-card p{
+    color:#444;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#1b1b1b;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+.footer p{
+    margin:5px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        text-align:center;
+    }
+
+    .nav-links a{
+        display:inline-block;
+        margin:8px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        FARMNET
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/predict">Crop Prediction</a>
+
+        <a href="/blog">Discussion</a>
+
+        <a href="/profile">Profile</a>
+
+        <a href="/logout">Logout</a>
+
+    </div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div>
+
+        <h1> Smart Farming Tips</h1>
+
+        <p>Modern solutions for better crop productivity</p>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>Practical Tips For Farmers</h2>
+
+        <p>Useful agriculture practices to improve farming efficiency and crop yield.</p>
+
+    </div>
+
+    <div class="tips-grid">
+
+        <!-- TIP 1 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">💧</div>
+
+            <h3>Smart Irrigation</h3>
+
+            <p>
+                Water crops during early morning or evening to reduce evaporation.
+                Drip irrigation saves water and improves plant growth efficiently.
+            </p>
+
+        </div>
+
+        <!-- TIP 2 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🌱</div>
+
+            <h3>Soil Fertility</h3>
+
+            <p>
+                Use compost, organic manure, and bio-fertilizers regularly.
+                Soil testing helps maintain proper Nitrogen, Phosphorus, and Potassium balance.
+            </p>
+
+        </div>
+
+        <!-- TIP 3 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🌾</div>
+
+            <h3>Crop Rotation</h3>
+
+            <p>
+                Rotating crops every season improves soil nutrients and reduces diseases.
+                It also prevents pest buildup in fields.
+            </p>
+
+        </div>
+
+        <!-- TIP 4 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🐛</div>
+
+            <h3>Pest Management</h3>
+
+            <p>
+                Inspect leaves weekly for insects or fungus.
+                Neem oil and eco-friendly pesticides reduce harmful chemical impact.
+            </p>
+
+        </div>
+
+        <!-- TIP 5 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">☀️</div>
+
+            <h3>Weather Monitoring</h3>
+
+            <p>
+                Check weather forecasts before irrigation or spraying pesticides.
+                Avoid fertilizer spraying during rainfall periods.
+            </p>
+
+        </div>
+
+        <!-- TIP 6 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🚜</div>
+
+            <h3>Modern Technology</h3>
+
+            <p>
+                Use weather apps, crop prediction systems, and smart farming tools
+                to improve productivity and reduce farming risks.
+            </p>
+
+        </div>
+
+        <!-- TIP 7 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🌿</div>
+
+            <h3>Weed Control</h3>
+
+            <p>
+                Remove weeds regularly because they consume nutrients from crops.
+                Mulching helps retain soil moisture and suppress weed growth.
+            </p>
+
+        </div>
+
+        <!-- TIP 8 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🌦</div>
+
+            <h3>Rainwater Harvesting</h3>
+
+            <p>
+                Store rainwater during monsoon season for irrigation in dry periods.
+                This helps reduce water shortages during summer.
+            </p>
+
+        </div>
+
+        <!-- TIP 9 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">🌻</div>
+
+            <h3>Increase Crop Yield</h3>
+
+            <p>
+                Use certified quality seeds and maintain proper spacing between crops
+                for healthy sunlight exposure and growth.
+            </p>
+
+        </div>
+
+        <!-- TIP 10 -->
+
+        <div class="tip-card">
+
+            <div class="tip-icon">📦</div>
+
+            <h3>Storage Management</h3>
+
+            <p>
+                Store grains in cool and dry places to prevent fungus and insect attacks.
+                Proper storage reduces post-harvest losses.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    <p>© 2026 FarmNet | Smart Agriculture Platform</p>
+
+    <p>Helping Farmers with Technology 🌱</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+        <title>Portal for Farmers</title>
+
+        <!-- Bootstrap Core CSS -->
+
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Custom CSS -->
+		<link rel="stylesheet" href="../css/patros.css" >
+        
+        <script>
+				CKEDITOR.replace( 'des' );
+				</script>
+		
+	</head>
+
+	<body data-spy="scroll">
+			
+<script type="text/javascript">
+				// function googleTranslateElementInit() {
+				// 	new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+				// }
+				function googleTranslateElementInit() {
+						new google.translate.TranslateElement({pageLanguage: 'en', 
+						layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+						'google_translate_element');
+				}
+				</script>
+				
+			<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+			
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!--<a class="navbar-brand" href="/expert/"><span id="logotitle">FarmNet</span></a>-->
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right custom-menu">
+							<li><a href="/expert/">Home</a></li>
+							
+							<li><a href="/expert/innovate">add Innovation</a></li>
+							<li><a href="/expert/logout">Log out</a></li>
+							<li><div id="google_translate_element" style="text-align:right"></div></li>
+		
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Page Content -->
+		<section class="container blog">
+			<div class="row">
+		        <!-- Blog Column -->
+		        <div class="col-md-8">
+		            <h1 class="page-header sidebar-title">
+		                Posts
+		            </h1>
+					<!-- First Blog Post -->
+					<%for (var r in post){%>
+		            <div class="row blogu">
+		                <div class="col-sm-4 col-md-4 ">
+		                    <div class="blog-thumb">
+		                        <a href="/expert/detail">
+		                            <img class="img-responsive" src="./uploads/<%= post[r].image %>" alt="photo">
+		                        </a>
+		                    </div>
+		                </div>
+		                <div class="col-sm-8 col-md-8">
+		                    <h2 class="blog-title">
+		                        <a href="/expert/detail/<%= post[r].title %>"><%= post[r].title %></a>
+		                    </h2>
+		                    <p><i class="fa fa-calendar-o"></i> <%= post[r].date %> 
+		                        <span class="comments-padding"></span><br>
+								<i class="fa fa-comment"></i> 0 comments<br>
+								<button class ="button btn-default" onclick="myFunction()" style="border-radius: 50%;"><i class="fa fa-star-o"></i></button>
+							</p>
+								<b>Author</b> : <%= post[r].owner %><br>
+								<b>Type</b>	:<%= post[r].type %>
+
+		                </div>
+		            </div>
+					<hr>
+					<%}%>
+		            <!-- Second Blog Post -->
+		            
+		            <div class="text-center"> 
+		                <ul class="pagination"> 
+		                    <li class="active"> <a href="#">1</a> </li> 
+		                    <li> <a href="#">2</a> </li> 
+		                    <li> <a href="#">3</a> </li> 
+		                    <li> <a href="#">4</a> </li> 
+		                    <li> <a href="#">5</a> </li> 
+		                    <li> <a href="#">Next</a> </li> 
+		                </ul> 
+		            </div>
+		        </div>
+		            <!-- Blog Sidebar Column -->
+		            <aside class="col-md-4 sidebar-padding">
+		                <div class="blog-sidebar">
+		                    <div class="input-group searchbar">
+		                        <input type="text" class="form-control searchbar" placeholder="Search for...">
+		                        <span class="input-group-btn">
+		                        <button class="btn btn-default" type="button">Search</button>
+		                        </span>
+		                    </div><!-- /input-group -->
+		                </div>
+		                <!-- Blog Categories -->
+		                <div class="blog-sidebar">
+								<h4 class="sidebar-title"><i class="fa fa-list-ul"></i> Categories</h4>
+								<hr>
+								<ul class="sidebar-list">
+									<li><a href="\expert\innovationblog">Innovations</a></li>
+									<li><a href="\expert\myblog">My posts</a></li>
+									<li><a href="\expert\queryblog">Queries</a></li>
+									
+								</ul>
+						</div>
+		                <!-- Recent Posts -->
+		                <!-- <div class="blog-sidebar">
+		                    <h4 class="sidebar-title"><i class="fa fa-align-left"></i> Recent Queries & Innovation</h4>
+		                    <hr style="margin-bottom: 5px;">
+
+		                    <div class="media">
+		                        <a class="pull-left" href="#">
+		                            <img class="img-responsive media-object" src="../images/port1.jpg" alt="Media Object">
+		                        </a>
+		                        <div class="media-body">
+		                            <h4 class="media-heading"><a href="#">Agriculture By Aircraft</a></h4>
+		                            <!-- In the media, drones have mostly been associated with the military and spying, plus the odd pizza-delivery publicity stunt. An annual competition in the United Arab Emirates, UAE Drones for Good Award, acknowledges both this dark reputation and that things are changing.</div> -->
+		                    <!-- </div></div>
+
+		                    <div class="media">
+		                        <a class="pull-left" href="#">
+		                            <img class="img-responsive media-object" src="../images/port2.jpg" alt="Media Object">
+		                        </a>
+		                        <div class="media-body">
+		                            <h4 class="media-heading"><a href="#">Post title 2</a></h4>
+		                            This is some sample text. This is some sample text. This is some sample text.
+		                        </div>
+		                    </div>
+
+		                    <div class="media">
+		                        <a class="pull-left" href="#">
+		                            <img class="img-responsive media-object" src="../images/port4.jpg" alt="Media Object">
+		                        </a>
+		                        <div class="media-body">
+		                            <h4 class="media-heading"><a href="#">Post title 3</a></h4>
+		                            This is some sample text. This is some sample text. This is some sample text.
+		                        </div>
+		                    </div>
+		                    <div class="media">
+		                        <a class="pull-left" href="#">
+		                            <img class="img-responsive media-object" src="../images/port5.jpg" alt="Media Object">
+		                        </a>
+		                        <div class="media-body">
+		                            <h4 class="media-heading"><a href="#">Post title 4</a></h4>
+		                            This is some sample text. This is some sample text. This is some sample text.
+		                        </div>
+		                    </div>
+		                </div> --> -->
+
+		                <!--<div class="blog-sidebar">
+		                    <h4 class="sidebar-title"><i class="fa fa-comments"></i> Recent Comments</h4>
+		                    <hr style="margin-bottom: 5px;">
+		                     <ul class="sidebar-list">
+		                        <li><h5 class="blog-title">Author Name</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+		                        </li>
+		                        <li><h5 class="blog-title">Author Name</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+		                        </li>
+		                        <li><h5 class="blog-title">Author Name</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+		                        </li>
+							</ul>
+						</div>-->
+
+					</aside>
+				</div>
+		    </section>
+
+        
+		
+		<section id="follow-us">
+			<div class="container"> 
+				<div class="text-center height-contact-element">
+					<h2>CONTACT US</h2>
+				</div>
+				<img class="img-responsive displayed" src="../images/short.png" alt="short" />
+				<div class="text-center height-contact-element">
+					<ul class="list-unstyled list-inline list-social-icons">
+						<li class="active"><a href="#"><i class="fa fa-facebook social-icons"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter social-icons"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus social-icons"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin social-icons"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<footer id="footer">
+			<div class="container">
+				<div class="row myfooter">
+					<div class="col-sm-6"><div class="pull-left">
+					© Copyright Company 2019 | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+					</div></div>
+					<div class="col-sm-6">
+						<div class="pull-right">Designed by <a href="#">Aggregators</a></div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+        <!-- jQuery -->
+        <script src="../js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+
+		<script>
+				function myFunction()
+				{
+					var button = document.querySelector('.button');
+					button.onclick = function () {
+					this.style.backgroundColor = "red";
+					this.style.color="white";
+					};
+
+				}
+			</script>
+        <!--Jquery Smooth Scrolling-->
+        <script>
+            $(document).ready(function(){
+                $('.custom-menu a[href^="#"], .intro-scroller .inner-link').on('click',function (e) {
+                    e.preventDefault();
+
+                    var target = this.hash;
+                    var $target = $(target);
+
+                    $('html, body').stop().animate({
+                        'scrollTop': $target.offset().top
+                    }, 900, 'swing', function () {
+                        window.location.hash = target;
+                    });
+                });
+
+                $('a.page-scroll').bind('click', function(event) {
+                    var $anchor = $(this);
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top
+                    }, 1500, 'easeInOutExpo');
+                    event.preventDefault();
+                });
+
+               $(".nav a").on("click", function(){
+                     $(".nav").find(".active").removeClass("active");
+                    $(this).parent().addClass("active");
+            	});
+
+                $('body').append('<div id="toTop" class="btn btn-primary color1"><span class="glyphicon glyphicon-chevron-up"></span></div>');
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop() != 0) {
+                            $('#toTop').fadeIn();
+                        } else {
+                            $('#toTop').fadeOut();
+                        }
+                    }); 
+                $('#toTop').click(function(){
+                    $("html, body").animate({ scrollTop: 0 }, 700);
+                    return false;
+                });
+
+            });
+        </script>
+
+    </body>
+</html>

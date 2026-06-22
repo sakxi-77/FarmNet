@@ -1,0 +1,21 @@
+{
+  "name": "farmnet",
+  "version": "1.0.0",
+  "description": "FarmNet - A Smart Farming Management System",
+  "main": "init.js",
+  "dependencies": {
+    "axios": "^1.16.0",
+    "dotenv": "^17.2.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongoose": "^5.5.0",
+    "multer": "^1.4.4"
+  },
+  "scripts": {
+    "start": "node init.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sakshi Londhe",
+  "license": "ISC"
+}

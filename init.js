@@ -160,7 +160,7 @@ app.post('/innregister',(req,res)=>{
 
 });
 app.get('/',(req,res)=>{
-    res.render('FarmNet Render Test')
+    res.render('index')
 
 });
 app.get('/single-post',(req,res)=>{

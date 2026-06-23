@@ -48,12 +48,12 @@ app.use((req, res, next) => {
 });
 
 // ---- database connection ----
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('✅ MongoDB connected successfully'))
-.catch(err => console.error('❌ MongoDB connection error:', err));
+//mongoose.connect(process.env.MONGO_URI, {
+ // useNewUrlParser: true,
+  //useUnifiedTopology: true
+//})
+//.then(() => console.log('✅ MongoDB connected successfully'))
+//.catch(err => console.error('❌ MongoDB connection error:', err));
 
 // ---- routes ----
 
@@ -83,9 +83,9 @@ const upload1 = multer({
  }).single('image')
 
 app.use(express.static('static'));
-app.use('/expert',route);
-app.use('/official',route2);
-app.use('/admin',route3);
+//app.use('/expert',route);
+//app.use('/official',route2);
+//app.use('/admin',route3);
 
 app.post('/innregister',(req,res)=>{
 
@@ -160,7 +160,7 @@ app.post('/innregister',(req,res)=>{
 
 });
 app.get('/',(req,res)=>{
-    res.render('index')
+    res.render('FarmNet Render Test')
 
 });
 app.get('/single-post',(req,res)=>{

@@ -47,21 +47,26 @@ app.post('/cregister',(req,res)=>{
    // var img;
 	upload(req,res,(err)=>{
 		 if(err){
-			res.send(err);
+			console.log(err);
+            return res.send(err);
 		}
 		else{
 			req.body.owner=req.session.user.fname;
 			//console.log(req.session.user.fname);
-			req.body.image=	req.files.image[0].filename;
-			req.body.video=	req.files.video[0].filename;
-			req.body.audio=	req.files.audio[0].filename;
-			 var data= new post(req.body);
-			data.save(function(err){
-				if(err) res.send(err);
-				else{
-						res.render('./expert/addInnovation');
-					}
-			})
+            req.body.image = req.files.image ? req.files.image[0].filename : "";
+            req.body.video = req.files.video ? req.files.video[0].filename : "";
+            req.body.audio = req.files.audio ? req.files.audio[0].filename : "";
+			var data= new post(req.body);
+            data.save(function(err){
+
+                if(err){
+                    console.log(err);
+                    return res.send(err);
+                }
+
+                return res.render('./expert/addInnovation');
+
+            });
 		 }
 	 });
 });
@@ -114,9 +119,12 @@ else{
 app.get('/viewuser/:aadhar',(req,res)=>{
 	if(req.session.user){
 	const usnm = req.params.aadhar;
-	farmer.findOne({aadhar: usnm},(err,data)=>{
+	farmer.findOne({
+    aadhar: usnm,
+    password: passwd
+    }, (err, data) => {
 		if(data){
-			    res.render('user',{farm:data});
+			    res.render('./expert/user',{farm:data});
         }})
         }
     else{
@@ -170,21 +178,38 @@ else{
 	
 // });
 
-app.post('/clogin',(req,res)=>{
-	const usnm = req.body.username;
-	const passwd= req.body.password;
-	expert.findOne({fname: usnm},(err,data)=>{
-		if(data){
-			req.session.user = data;
-			res.redirect('/expert/');
-		}
-		else{
-			var resp =`
-        <script> alert('login Incorrect!');window.location.href='/expert/login';</script>
-        `;
-        res.send(resp);
-		}
-	})
+app.post('/clogin', (req, res) => {
+
+    const usnm = req.body.aadhar;
+    const passwd = req.body.password;
+
+    farmer.findOne(
+        {
+            aadhar: usnm,
+            password: passwd
+        },
+        (err, data) => {
+
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+
+            if (data) {
+                req.session.user = data;
+                return res.redirect('/profile');
+            }
+
+            return res.send(`
+                <script>
+                    alert('Invalid Aadhaar or Password');
+                    window.location.href='/login';
+                </script>
+            `);
+
+        }
+    );
+
 });
 
 app.get('/logout',(req,res)=>{
@@ -222,28 +247,6 @@ app.get('/login',(req,res)=>{
         res.send(resp);   
 	}
 
-})
-
-
-.get('/innovationblog',(req,res)=>{
-    if(req.session.user){
-        var user = req.session.user;
-        console.log(user);
-		post.find({type:'Innovation'},(err, data)=> {
-            if(data)
-            {console.log(data);
-            res.render('expert/index',{post:data,farmer:user});}
-            else
-            res.send("no posts yet!");
-          })
-        }
-    else{
-        var resp =`
-        <script> alert('log in first');window.location.href='expert/login';</script>
-        `;
-        res.send(resp);   
-	}
-    //res.render('blog')
 })
 
 .get('/queryblog',(req,res)=>{

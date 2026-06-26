@@ -120,9 +120,8 @@ app.get('/viewuser/:aadhar',(req,res)=>{
 	if(req.session.user){
 	const usnm = req.params.aadhar;
 	farmer.findOne({
-    aadhar: usnm,
-    password: passwd
-    }, (err, data) => {
+    aadhar: usnm}, 
+    (err, data) => {
 		if(data){
 			    res.render('./expert/user',{farm:data});
         }})

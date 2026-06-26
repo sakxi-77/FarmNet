@@ -329,28 +329,32 @@ app.get('/farmerregistration',(req,res)=>{
     res.render('farmerregistration');
 });
 
+app.post('/cregister', (req, res) => {
 
-app.post('/cregister',(req,res)=>{
-    
-    upload1(req,res,(err)=>{
-        if(err){
-           res.send(err);
-       }
-       else{
-          // req.body.owner=req.session.user.fname;
-          console.log(req.body.image);
-           //req.body.image=req.file.filename1;
-           
-    var data= new farmer(req.body);
-    data.save(function(err){
-        if(err) res.send(err);
-        else{
-                res.render('login');
+    upload1(req, res, (err) => {
+
+        if (err) {
+            console.log(err);
+            return res.send(err);
         }
-})
-       }
-    })
-})
+
+        var data = new farmer(req.body);
+
+        data.save(function(err) {
+
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+
+            console.log("Farmer registered successfully:", data);
+
+            return res.render('login');
+        });
+
+    });
+
+});
 
 
 app.get('/notifications',(req,res)=>{
@@ -526,21 +530,36 @@ app.get('/viewpost/:id',(req,res)=>{
 
 });
 
-app.post('/clogin',(req,res)=>{
-	const usnm = req.body.aadhar;
-	const passwd= req.body.password;
-	farmer.findOne({aadhar: usnm},(err,data)=>{
-		if(data){
-			req.session.user = data;
-			res.redirect('/profile');
-		}
-		else{
-			var resp =`
-        <script> alert('login Incorrect!');window.location.href='/login';</script>
-        `;
-        res.send(resp);
-		}
-	})
+app.post('/clogin', (req, res) => {
+
+    console.log("LOGIN BODY:", req.body);
+
+    const usnm = req.body.aadhar;
+    const passwd = req.body.password;
+
+    farmer.findOne({ aadhar: usnm }, (err, data) => {
+
+        console.log("FOUND FARMER:", data);
+
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+
+        if (data) {
+            req.session.user = data;
+            return res.redirect('/profile');
+        }
+
+        return res.send(`
+        <script>
+        alert('login Incorrect!');
+        window.location.href='/login';
+        </script>
+        `);
+
+    });
+
 });
 
 app.get('/logout',(req,res)=>{

@@ -530,33 +530,34 @@ app.get('/viewpost/:id',(req,res)=>{
 
 });
 
-app.post('/clogin', (req, res) => {
+app.post('/cregister', (req, res) => {
 
-    console.log("LOGIN BODY:", req.body);
-
-    const usnm = req.body.aadhar;
-    const passwd = req.body.password;
-
-    farmer.findOne({ aadhar: usnm }, (err, data) => {
-
-        console.log("FOUND FARMER:", data);
+    upload1(req, res, (err) => {
 
         if (err) {
             console.log(err);
             return res.send(err);
         }
 
-        if (data) {
-            req.session.user = data;
-            return res.redirect('/profile');
-        }
+        console.log("REGISTER BODY:", req.body);
 
-        return res.send(`
-        <script>
-        alert('login Incorrect!');
-        window.location.href='/login';
-        </script>
-        `);
+        const data = new farmer(req.body);
+
+        data.save(function(err, savedDoc) {
+
+            if (err) {
+                console.log("SAVE ERROR:", err);
+                return res.send(err);
+            }
+
+            console.log("SAVED DOC:", savedDoc);
+
+            farmer.countDocuments({}, (err, count) => {
+                console.log("TOTAL FARMERS:", count);
+            });
+
+            res.render("login");
+        });
 
     });
 

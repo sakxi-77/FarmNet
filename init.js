@@ -682,28 +682,29 @@ app.post('/clogin', (req, res) => {
     const usnm = req.body.aadhar;
     const passwd = req.body.password;
 
-    farmer.findOne({
-        aadhar: usnm,
-        password: passwd
-    }, (err, data) => {
+    console.log("Login request:", usnm, passwd);
+
+    farmer.findOne({ aadhar: usnm }, (err, data) => {
+
+        console.log("Farmer found:", data);
 
         if (err) {
             console.log(err);
             return res.send("Server Error");
         }
 
-        if (data) {
+        if (!data) {
+            return res.send("<script>alert('Aadhar not found');window.location='/login';</script>");
+        }
+
+        console.log("DB Password:", data.password);
+
+        if (data.password === passwd) {
             req.session.user = data;
             return res.redirect('/profile');
         }
 
-        var resp = `
-        <script>
-            alert('Login Incorrect!');
-            window.location.href='/login';
-        </script>`;
-        res.send(resp);
-
+        res.send("<script>alert('Wrong Password');window.location='/login';</script>");
     });
 
 });

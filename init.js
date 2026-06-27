@@ -682,7 +682,10 @@ app.post('/clogin', (req, res) => {
     const usnm = req.body.aadhar;
     const passwd = req.body.password;
 
-    console.log("Login request:", usnm, passwd);
+   console.log("Login request:");
+   console.log(req.body);
+   console.log("Aadhar type:", typeof usnm);
+   console.log("Aadhar value:", JSON.stringify(usnm));
 
     farmer.findOne({ aadhar: usnm }, (err, data) => {
 

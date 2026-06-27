@@ -534,3 +534,27 @@ ul.cb-slideshow h4{
 }
 .nav-pills .active { background-color: green; color:#FFF; }
 .contact-msg { line-height:1.6em; margin-bottom:20px;}
+
+@media (max-width: 992px){
+
+.navbar-nav{
+    display:flex !important;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+.navbar-nav::-webkit-scrollbar{
+    display:none;
+}
+
+.navbar-nav>li{
+    float:none;
+}
+
+.navbar-nav>li>a{
+    padding:15px 8px;
+    font-size:12px;
+}
+
+}

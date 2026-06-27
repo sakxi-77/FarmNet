@@ -689,8 +689,8 @@ app.post('/clogin', (req, res) => {
 
     farmer.findOne({ aadhar: usnm }, (err, data) => {
 
+        console.log("Searching with:", { aadhar: usnm });
         console.log("Farmer found:", data);
-
         if (err) {
             console.log(err);
             return res.send("Server Error");

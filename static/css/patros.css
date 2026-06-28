@@ -65,12 +65,17 @@ body { color: #313131; font-family: 'Open Sans'; }
 ::-moz-selection { background: green;color:#fff; }
 ::-webkit-selection { background: green;color:#fff; }
 ::selection { background: green;color:#fff;} 
-html, body { height: 100%; }
+html, body { width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; }
 a{color:green;text-decoration:none}
 a:focus,a:hover{color:#313131;text-decoration:none;}
 .img-portfolio { margin-bottom: 30px; }
 .img-hover:hover { opacity: 0.8; }
-header.carousel { height: 100%; max-height: 650px; }
+header.carousel { height: calc(100vh - 72px);
+    max-height: calc(100vh - 72px);
+    overflow: hidden; }
 header.carousel .item, header.carousel .item.active, header.carousel .carousel-inner { height: 100%; }
 header.carousel .fill2 { width: 100%; height: 100%; background-position: center; background-size: cover; background-color: #1B2D2D; }
 header.carousel .fill { width: 100%; height: 100%; background-position: center; background-size: cover; background-color:green; }
@@ -664,4 +669,43 @@ img{
     font-size:22px;
 }
 
+}
+
+/* ===== Custom Scrollbar ===== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.45);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) transparent;
+}
+html,
+body,
+header#home,
+.cb-slideshow,
+.cb-slideshow li,
+.cb-slideshow li span {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+html {
+    overflow-y: overlay;
 }
